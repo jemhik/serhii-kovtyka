@@ -10,11 +10,4 @@ public class BeanD extends MainBean{
         super(name, value);
     }
 
-    public void beanDInitMethod(){
-        System.out.println(this.getClass().getSimpleName() + " init");
-    }
-
-    public void beanDDestroyMethod(){
-        System.out.println(this.getClass().getSimpleName() + " destroy");
-    }
 }

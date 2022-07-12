@@ -24,18 +24,18 @@ public class OtherConfig {
     }
 
     @DependsOn("beanD")
-    @Bean(initMethod = "beanBInitMethod", destroyMethod = "beanBDestroyMethod")
+    @Bean(initMethod = "beanInitMethod", destroyMethod = "beanDestroyMethod")
     public BeanB beanB(){
         return new BeanB(env.getProperty("beanB.name"), Integer.parseInt(Objects.requireNonNull(env.getProperty("beanB.value"))));
     }
 
     @DependsOn("beanB")
-    @Bean(initMethod = "beanCInitMethod", destroyMethod = "beanCDestroyMethod")
+    @Bean(initMethod = "beanInitMethod", destroyMethod = "beanDestroyMethod")
     public BeanC beanC(){
         return new BeanC(env.getProperty("beanC.name"), Integer.parseInt(Objects.requireNonNull(env.getProperty("beanC.value"))));
     }
 
-    @Bean(initMethod = "beanDInitMethod", destroyMethod = "beanDDestroyMethod")
+    @Bean(initMethod = "beanInitMethod", destroyMethod = "beanDestroyMethod")
     public BeanD beanD(){
         return new BeanD(env.getProperty("beanD.name"), Integer.parseInt(Objects.requireNonNull(env.getProperty("beanD.value"))));
     }

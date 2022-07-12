@@ -10,11 +10,4 @@ public class BeanC extends MainBean{
         super(name, value);
     }
 
-    public void beanCInitMethod(){
-        System.out.println(this.getClass().getSimpleName() + " init");
-    }
-
-    public void beanCDestroyMethod(){
-        System.out.println(this.getClass().getSimpleName() + " destroy");
-    }
 }
