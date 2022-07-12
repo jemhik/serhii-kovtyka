@@ -1,20 +1,20 @@
 package com.epam.spring.homework2.beans;
 
 public class MainBean {
-    private String name;
-    private int value;
-
-    public void beanInitMethod(){
-        System.out.println(this.getClass().getSimpleName() + " init");
-    }
-
-    public void beanDestroyMethod(){
-        System.out.println(this.getClass().getSimpleName() + " destroy");
-    }
+    private final String name;
+    private final int value;
 
     public MainBean(String name, int value) {
         this.name = name;
         this.value = value;
+    }
+
+    public void beanInitMethod() {
+        System.out.println(this.getClass().getSimpleName() + " init");
+    }
+
+    public void beanDestroyMethod() {
+        System.out.println(this.getClass().getSimpleName() + " destroy");
     }
 
     public String getName() {

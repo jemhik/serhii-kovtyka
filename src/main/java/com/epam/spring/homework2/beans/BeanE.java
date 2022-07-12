@@ -3,7 +3,7 @@ package com.epam.spring.homework2.beans;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-public class BeanE extends MainBean{
+public class BeanE extends MainBean {
 
     public BeanE(String name, int value) {
         super(name, value);
@@ -15,7 +15,7 @@ public class BeanE extends MainBean{
     }
 
     @PreDestroy
-    public void beanEPreDestroy(){
+    public void beanEPreDestroy() {
         System.out.println(this.getClass().getSimpleName() + " Pre Destroy");
     }
 }

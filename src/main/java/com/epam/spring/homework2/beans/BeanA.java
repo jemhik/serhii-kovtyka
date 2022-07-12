@@ -10,12 +10,12 @@ public class BeanA extends MainBean implements InitializingBean, DisposableBean 
     }
 
     @Override
-    public void destroy(){
+    public void destroy() {
         System.out.println(this.getClass().getSimpleName() + " destroy");
     }
 
     @Override
-    public void afterPropertiesSet(){
+    public void afterPropertiesSet() {
         System.out.println(this.getClass().getSimpleName() + " After Properties Set");
     }
 }
