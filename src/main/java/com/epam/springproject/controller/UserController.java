@@ -1,6 +1,7 @@
 package com.epam.springproject.controller;
 
 
+import com.epam.springproject.api.UserApi;
 import com.epam.springproject.dto.UserDto;
 import com.epam.springproject.dto.group.OnCreate;
 import com.epam.springproject.dto.group.OnUpdate;
@@ -16,43 +17,38 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/training-center")
 @RequiredArgsConstructor
 @Slf4j
-public class UserController {
+public class UserController implements UserApi {
 
     private final UserService userService;
 
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "/user")
+    @Override
     public List<UserDto> getAllUsers() {
         log.info("CourseController getAllUsers method");
         return userService.listUsers();
     }
 
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "/user/{email}")
-    public UserDto getUser(@PathVariable String email) {
+    @Override
+    public UserDto getUser(String email) {
         log.info("CourseController getUser with email " + email);
         return userService.getUser(email);
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(value = "/user")
-    public UserDto createUser(@RequestBody @Validated(OnCreate.class) UserDto userDto) {
+    @Override
+    public UserDto createUser(UserDto userDto) {
         log.info("CourseController getUser with email " + userDto.getEmail());
         return userService.createUser(userDto);
     }
 
-    @ResponseStatus(HttpStatus.OK)
-    @PutMapping(value = "/user/{email}")
-    public UserDto updateUser(@PathVariable String email, @RequestBody @Validated(OnUpdate.class) UserDto userDto) {
+    @Override
+    public UserDto updateUser(String email, UserDto userDto) {
         log.info("CourseController getUser with email " + email);
         return userService.updateUser(email, userDto);
     }
 
-    @DeleteMapping(value = "/user/{email}")
-    public ResponseEntity<Void> deleteUser(@PathVariable String email) {
+    @Override
+    public ResponseEntity<Void> deleteUser(String email) {
         log.info("CourseController getUser with email " + email);
         userService.deleteUser(email);
         return ResponseEntity.noContent().build();

@@ -40,6 +40,5 @@ public class UserDto {
     private String password;
     private Role role;
     private Status status;
-    private List<Course> courses;
 
 }
