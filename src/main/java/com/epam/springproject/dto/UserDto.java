@@ -2,7 +2,6 @@ package com.epam.springproject.dto;
 
 import com.epam.springproject.dto.group.OnCreate;
 import com.epam.springproject.dto.group.OnUpdate;
-import com.epam.springproject.model.Course;
 import com.epam.springproject.model.Role;
 import com.epam.springproject.model.Status;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -13,7 +12,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Pattern;
-import java.util.List;
 
 @Data
 @Builder

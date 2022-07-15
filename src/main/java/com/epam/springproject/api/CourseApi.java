@@ -39,7 +39,7 @@ public interface CourseApi {
     @ApiOperation("Update course")
     @ResponseStatus(HttpStatus.OK)
     @PutMapping(value = "/{courseId}")
-    CourseDto updateCourse(@RequestBody  @Valid CourseDto courseDto, @PathVariable long courseId);
+    CourseDto updateCourse(@RequestBody @Valid CourseDto courseDto, @PathVariable long courseId);
 
     @ApiImplicitParams({
             @ApiImplicitParam(name = "courseId", paramType = "path", required = true, value = "Course id")

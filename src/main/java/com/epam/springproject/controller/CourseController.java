@@ -2,16 +2,12 @@ package com.epam.springproject.controller;
 
 import com.epam.springproject.api.CourseApi;
 import com.epam.springproject.dto.CourseDto;
-import com.epam.springproject.dto.group.OnCreate;
 import com.epam.springproject.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
