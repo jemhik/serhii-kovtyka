@@ -1,15 +1,16 @@
 package com.epam.springproject.repository;
 
-import com.epam.springproject.model.Course;
+import com.epam.springproject.model.StudentCourse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface CourseRepository extends JpaRepository<Course, Long> {
+public interface StudentCourseRepository extends JpaRepository<StudentCourse, Long> {
 
-    Page<Course> findByTeacherId(long teacherId, Pageable pageable);
+    Page<StudentCourse> findByStudentId(Long studentId, Pageable pageable);
+
 }

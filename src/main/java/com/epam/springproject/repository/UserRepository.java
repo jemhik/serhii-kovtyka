@@ -1,18 +1,17 @@
 package com.epam.springproject.repository;
 
 import com.epam.springproject.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.util.Optional;
 
-public interface UserRepository {
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
 
-    User getUser(String email);
+    Optional<User> findByEmail(String email);
 
-    User createUser(User user);
+    boolean existsByEmail(String email);
 
-    User updateUser(String email, User user);
-
-    void deleteUser(String email);
-
-    List<User> listUsers();
+    Optional<User> findById(Long id);
 }

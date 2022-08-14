@@ -1,18 +1,20 @@
 package com.epam.springproject.service;
 
 import com.epam.springproject.dto.CourseDto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface CourseService {
 
-    List<CourseDto> getTeacherCourses(long teacherId);
+    Page<CourseDto> getTeacherCourses(Pageable pageable, long teacherId);
 
-    List<CourseDto> getAllCourses();
+    Page<CourseDto> listCourses(Pageable pageable);
 
     CourseDto createCourse(CourseDto course);
 
-    CourseDto updateCourse(CourseDto course, long courseId);
+    CourseDto updateCourse(CourseDto course);
 
     void deleteCourse(long courseId);
 

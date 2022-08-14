@@ -6,6 +6,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -21,12 +23,12 @@ public interface CourseApi {
     @ApiOperation("Get teacher courses")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/{teacherId}")
-    List<CourseDto> getTeacherCourses(@PathVariable long teacherId);
+    Page<CourseDto> getTeacherCourses(Pageable pageable, @PathVariable long teacherId);
 
     @ApiOperation("Get all courses")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/")
-    List<CourseDto> getAllCourses();
+    Page<CourseDto> listCourses(Pageable pageable);
 
     @ApiOperation("Create course")
     @ResponseStatus(HttpStatus.CREATED)
@@ -46,5 +48,5 @@ public interface CourseApi {
     })
     @ApiOperation("Delete course")
     @DeleteMapping(value = "/{courseId}")
-    ResponseEntity<Void> deleteCourse(@PathVariable long teacherId);
+    ResponseEntity<Void> deleteCourse(@PathVariable long courseId);
 }

@@ -7,6 +7,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -21,7 +23,7 @@ public interface UserApi {
     @ApiOperation("Get all users")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/")
-    List<UserDto> getAllUsers();
+    Page<UserDto> getAllUsers(Pageable pageable);
 
     @ApiImplicitParams({
             @ApiImplicitParam(name = "email", paramType = "path", required = true, value = "User email")

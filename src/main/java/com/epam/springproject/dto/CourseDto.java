@@ -1,15 +1,21 @@
 package com.epam.springproject.dto;
 
 import com.epam.springproject.dto.group.OnCreate;
+import com.epam.springproject.dto.group.OnUpdate;
+import com.epam.springproject.model.User;
 import com.epam.springproject.validation.TextBoxConstraint;
 import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Null;
 
 @Data
 @Builder
 public class CourseDto {
+
+    @Null(message = "'courseId' should be absent in request", groups = OnUpdate.class)
+    private Long courseId;
 
     @NotBlank(message = "'name' shouldn't be empty", groups = OnCreate.class)
     private String name;
@@ -28,7 +34,7 @@ public class CourseDto {
     @NotBlank(message = "'duration' shouldn't be empty", groups = OnCreate.class)
     private String duration;
 
-    private long courseId;
-    private long teacherId;
+    @Null(message = "'teacher' should be absent in request", groups = OnUpdate.class)
+    private User teacher;
 
 }
