@@ -1,9 +1,11 @@
 package com.epam.springproject.controller;
 
 import com.epam.springproject.api.StudentCourseApi;
+import com.epam.springproject.dto.JournalDto;
 import com.epam.springproject.dto.StudentCourseDto;
 import com.epam.springproject.model.Course;
 import com.epam.springproject.model.StudentCourse;
+import com.epam.springproject.service.RateStudentService;
 import com.epam.springproject.service.StudentCourseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class StudentCourseController implements StudentCourseApi {
 
     private final StudentCourseService studentCourseService;
+    private final RateStudentService rateStudentService;
 
     @Override
     public Page<StudentCourseDto> findByStudentId(Pageable pageable, long studentId) {
@@ -31,5 +34,15 @@ public class StudentCourseController implements StudentCourseApi {
     @Override
     public StudentCourseDto finishCourse(StudentCourseDto studentCourseDto, long courseId) {
         return studentCourseService.finishCourse(studentCourseDto, courseId);
+    }
+
+    @Override
+    public Page<StudentCourseDto> findFinishedCourses(Pageable pageable) {
+        return rateStudentService.findFinishedCourses(pageable);
+    }
+
+    @Override
+    public JournalDto rateStudent(JournalDto journalDto) {
+        return rateStudentService.rateStudent(journalDto);
     }
 }

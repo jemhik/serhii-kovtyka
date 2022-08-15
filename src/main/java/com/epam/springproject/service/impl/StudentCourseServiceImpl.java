@@ -1,6 +1,7 @@
 package com.epam.springproject.service.impl;
 
 import com.epam.springproject.dto.StudentCourseDto;
+import com.epam.springproject.exception.EntityNotFoundException;
 import com.epam.springproject.mapper.StudentCourseMapper;
 import com.epam.springproject.model.StudentCourse;
 import com.epam.springproject.repository.CourseRepository;
@@ -13,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
@@ -39,21 +41,16 @@ public class StudentCourseServiceImpl implements StudentCourseService {
     }
 
     @Override
+    @Transactional
     public StudentCourseDto finishCourse(StudentCourseDto studentCourseDto, long courseId) {
-//        log.info("StudentCourseService finishCourse with courseId {}, studentId {}",
-//                studentCourseDto.getCourse().getCourseId(), studentCourseDto.getStudent().getId());
+        log.info("StudentCourseService finishCourse with courseId {}, studentId {}",
+                studentCourseDto.getCourse().getCourseId(), studentCourseDto.getStudent().getId());
 
-        StudentCourse oldCourse = studentCourseRepository.getById(courseId);
-
-        studentCourseDto.setStudentCourseId(courseId);
-        studentCourseDto.setCourse(oldCourse.getCourse());
-        studentCourseDto.setStudent(oldCourse.getStudent());
-        studentCourseDto.setProgress("submitted");
-
+        studentCourseRepository.
+                finishCourse(studentCourseDto.getStudentSolution(), "submitted", courseId);
         return StudentCourseMapper.INSTANCE.mapStudentCourseToStudentCourseDto(
-                studentCourseRepository.save(
-                        StudentCourseMapper.INSTANCE.
-                                mapStudentCourseDtoToStudentCourse(studentCourseDto))
+                studentCourseRepository
+                        .getById(courseId)
         );
     }
 

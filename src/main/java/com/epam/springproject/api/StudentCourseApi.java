@@ -1,6 +1,7 @@
 package com.epam.springproject.api;
 
 import com.epam.springproject.dto.CourseDto;
+import com.epam.springproject.dto.JournalDto;
 import com.epam.springproject.dto.StudentCourseDto;
 import com.epam.springproject.dto.group.OnCreate;
 import io.swagger.annotations.Api;
@@ -38,4 +39,13 @@ public interface StudentCourseApi {
     @PutMapping(value = "/{courseId}")
     StudentCourseDto finishCourse(@RequestBody @Valid StudentCourseDto studentCourseDto, @PathVariable long courseId);
 
+    @ApiOperation("Get finished courses")
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "/finished/")
+    Page<StudentCourseDto> findFinishedCourses(Pageable pageable);
+
+    @ApiOperation("Rate student")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(value = "/rate/")
+    JournalDto rateStudent(@RequestBody JournalDto journalDto);
 }
