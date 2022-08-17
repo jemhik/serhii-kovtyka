@@ -19,7 +19,7 @@ public interface UserApi {
 
     @ApiOperation("Get all users")
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping()
+    @GetMapping
     Page<UserDto> getAllUsers(@RequestParam("pageSize") int pageSize, @RequestParam("pageNumber") int pageNumber,
                               @RequestParam("sortType") String sortType);
 

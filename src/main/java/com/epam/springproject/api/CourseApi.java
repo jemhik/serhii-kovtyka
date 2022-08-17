@@ -26,7 +26,7 @@ public interface CourseApi {
 
     @ApiOperation("Get all courses")
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping()
+    @GetMapping
     Page<CourseDto> listCourses(@RequestParam("pageSize") int pageSize, @RequestParam("pageNumber") int pageNumber,
                                 @RequestParam("sortType") String sortType);
 
