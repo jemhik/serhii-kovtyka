@@ -15,9 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -33,43 +30,63 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto getUser(String email) {
         log.info("UserService getUser by email " + email);
+
         User user = userRepository.findByEmail(email)
                 .orElseThrow(EntityNotFoundException::new);
+
         return UserMapper.INSTANCE.mapUserToUserDto(user);
     }
 
     @Override
     public UserDto createUser(UserDto userDto) {
         log.info("UserService createUser with email " + userDto.getEmail());
-        if(userRepository.existsByEmail((userDto.getEmail()))) {
+
+        if (userRepository.existsByEmail((userDto.getEmail()))) {
             throw new UserAlreadyExistsException();
         }
-        userDto.setRole(roleRepository.findByName(DEFAULT_USER_ROLE_NAME).orElseThrow(EntityNotFoundException::new));
-        userDto.setStatus(statusRepository.findByName(DEFAULT_USER_STATUS_NAME).orElseThrow(EntityNotFoundException::new));
+
+        userDto.setRole(
+                roleRepository
+                        .findByName(DEFAULT_USER_ROLE_NAME)
+                        .orElseThrow(EntityNotFoundException::new));
+
+        userDto.setStatus(
+                statusRepository
+                        .findByName(DEFAULT_USER_STATUS_NAME)
+                        .orElseThrow(EntityNotFoundException::new));
+
         User user = UserMapper.INSTANCE.mapUserDtoToUser(userDto);
         user = userRepository.save(user);
+
         return UserMapper.INSTANCE.mapUserToUserDto(user);
     }
 
     @Override
     public UserDto updateUser(String email, UserDto userDto) {
         log.info("UserService updateUser with email " + email);
+
         User user = UserMapper.INSTANCE.mapUserDtoToUser(userDto);
 
-        User oldUser = userRepository.findByEmail(email).orElseThrow(EntityNotFoundException::new);
+        User oldUser = userRepository
+                .findByEmail(email)
+                .orElseThrow(EntityNotFoundException::new);
+
         user.setEmail(oldUser.getEmail());
         user.setPassword(oldUser.getPassword());
         user.setId(oldUser.getId());
 
         user = userRepository.save(user);
+
         return UserMapper.INSTANCE.mapUserToUserDto(user);
     }
 
     @Override
     public void deleteUser(String email) {
         log.info("UserService deleteUser with email " + email);
+
         User user = userRepository.findByEmail(email)
-                        .orElseThrow(EntityNotFoundException::new);
+                .orElseThrow(EntityNotFoundException::new);
+
         userRepository.delete(user);
     }
 
@@ -80,20 +97,4 @@ public class UserServiceImpl implements UserService {
                 .map(UserMapper.INSTANCE::mapUserToUserDto);
     }
 
-//    private UserDto mapUserToUserDto(User user){
-//        return UserDto.builder()
-//                .firstName(user.getFirstName())
-//                .lastName(user.getLastName())
-//                .email(user.getEmail())
-//                .build();
-//    }
-//
-//    private User mapUserDtoToUser(UserDto userDto){
-//        return User.builder()
-//                .firstName(userDto.getFirstName())
-//                .lastName(userDto.getLastName())
-//                .email(userDto.getEmail())
-//                .password(userDto.getPassword())
-//                .build();
-//    }
 }

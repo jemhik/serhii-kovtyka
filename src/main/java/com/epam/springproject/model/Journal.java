@@ -20,7 +20,7 @@ public class Journal {
     private Long assessmentId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="student_course_id", referencedColumnName = "studentCourseId")
+    @JoinColumn(name = "student_course_id", referencedColumnName = "studentCourseId")
     @JsonIgnore
     private StudentCourse studentCourse;
 

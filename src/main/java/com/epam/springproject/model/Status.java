@@ -1,9 +1,7 @@
 package com.epam.springproject.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import lombok.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -18,15 +16,15 @@ import java.util.Set;
 @Table(name = "STATUS")
 public class Status {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long statusId;
-    private String name;
-
     @JsonIgnore
     @OneToMany(mappedBy = "status")
     @ToString.Exclude
     Set<User> users;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long statusId;
+    private String name;
 
     @Override
     public boolean equals(Object o) {

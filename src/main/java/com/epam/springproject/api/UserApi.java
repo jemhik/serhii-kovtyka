@@ -8,13 +8,10 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Api(tags = "User management API")
 @RequestMapping("/api/v1/users")
@@ -22,8 +19,9 @@ public interface UserApi {
 
     @ApiOperation("Get all users")
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "/")
-    Page<UserDto> getAllUsers(Pageable pageable);
+    @GetMapping()
+    Page<UserDto> getAllUsers(@RequestParam("pageSize") int pageSize, @RequestParam("pageNumber") int pageNumber,
+                              @RequestParam("sortType") String sortType);
 
     @ApiImplicitParams({
             @ApiImplicitParam(name = "email", paramType = "path", required = true, value = "User email")

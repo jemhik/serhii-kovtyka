@@ -13,9 +13,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -42,7 +39,9 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public CourseDto createCourse(CourseDto course) {
         log.info("CourseService createCourse with name " + course.getName());
+
         course.setTeacher(userRepository.findById(course.getTeacher().getId()).orElseThrow(EntityNotFoundException::new));
+
         return CourseMapper.INSTANCE.mapCourseToCourseDto(
                 courseRepository.save(
                         CourseMapper.INSTANCE.mapCourseDtoToCourse(course)));
@@ -65,25 +64,4 @@ public class CourseServiceImpl implements CourseService {
         log.info("CourseService deleteCourse with courseId " + courseId);
         courseRepository.deleteById(courseId);
     }
-
-//    private CourseDto mapCourseToCourseDto(Course course) {
-//        return CourseDto.builder()
-//                .name(course.getName())
-//                .description(course.getDescription())
-//                .duration(course.getDuration())
-//                .materials(course.getMaterials())
-//                .task(course.getTask())
-//                .build();
-//    }
-//
-//    private Course mapCourseDtoToCourse(CourseDto courseDto) {
-//        return Course.builder()
-//                .name(courseDto.getName())
-//                .description(courseDto.getDescription())
-//                .duration(courseDto.getDuration())
-//                .materials(courseDto.getMaterials())
-//                .task(courseDto.getTask())
-//                .build();
-//    }
-
 }

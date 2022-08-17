@@ -1,6 +1,5 @@
 package com.epam.springproject.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
@@ -23,17 +22,19 @@ public class User {
 
     private String firstName;
     private String lastName;
+
     @Column(nullable = false, unique = true)
     private String email;
+
     private String password;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="role_id", referencedColumnName = "roleId")
+    @JoinColumn(name = "role_id", referencedColumnName = "roleId")
     @JsonIgnore
     private Role role;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="status_id", referencedColumnName = "statusId")
+    @JoinColumn(name = "status_id", referencedColumnName = "statusId")
     @JsonIgnore
     private Status status;
 

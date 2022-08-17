@@ -1,8 +1,6 @@
 package com.epam.springproject.mapper;
 
-import com.epam.springproject.dto.CourseDto;
 import com.epam.springproject.dto.StudentCourseDto;
-import com.epam.springproject.model.Course;
 import com.epam.springproject.model.StudentCourse;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

@@ -6,11 +6,11 @@ import com.epam.springproject.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,9 +26,9 @@ public class CourseController implements CourseApi {
     }
 
     @Override
-    public Page<CourseDto> listCourses(Pageable pageable) {
+    public Page<CourseDto> listCourses(int pageSize, int pageNumber, String sortType) {
         log.info("CourseController getAllCourses method");
-        return courseService.listCourses(pageable);
+        return courseService.listCourses(PageRequest.of(pageNumber, pageSize, Sort.by(Sort.DEFAULT_DIRECTION, sortType)));
     }
 
     @Override
@@ -39,7 +39,7 @@ public class CourseController implements CourseApi {
 
     @Override
     public CourseDto updateCourse(CourseDto courseDto, long courseId) {
-        log.info("CourseController updateCourse with teacherId " + courseId);
+        log.info("CourseController updateCourse with courseId " + courseId);
         courseDto.setCourseId(courseId);
         return courseService.updateCourse(courseDto);
     }

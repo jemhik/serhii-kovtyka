@@ -1,14 +1,11 @@
 package com.epam.springproject.service.impl;
 
 import com.epam.springproject.dto.StudentCourseDto;
-import com.epam.springproject.exception.EntityNotFoundException;
 import com.epam.springproject.mapper.StudentCourseMapper;
-import com.epam.springproject.model.StudentCourse;
 import com.epam.springproject.repository.CourseRepository;
 import com.epam.springproject.repository.StudentCourseRepository;
 import com.epam.springproject.repository.UserRepository;
 import com.epam.springproject.service.StudentCourseService;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -48,6 +45,7 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 
         studentCourseRepository.
                 finishCourse(studentCourseDto.getStudentSolution(), "submitted", courseId);
+
         return StudentCourseMapper.INSTANCE.mapStudentCourseToStudentCourseDto(
                 studentCourseRepository
                         .getById(courseId)

@@ -3,8 +3,6 @@ package com.epam.springproject.controller;
 import com.epam.springproject.api.StudentCourseApi;
 import com.epam.springproject.dto.JournalDto;
 import com.epam.springproject.dto.StudentCourseDto;
-import com.epam.springproject.model.Course;
-import com.epam.springproject.model.StudentCourse;
 import com.epam.springproject.service.RateStudentService;
 import com.epam.springproject.service.StudentCourseService;
 import lombok.RequiredArgsConstructor;
@@ -23,26 +21,33 @@ public class StudentCourseController implements StudentCourseApi {
 
     @Override
     public Page<StudentCourseDto> findByStudentId(Pageable pageable, long studentId) {
+        log.info("StudentCourseController find courses by student id " + studentId);
         return studentCourseService.findByStudentId(studentId, pageable);
     }
 
     @Override
     public StudentCourseDto startCourse(StudentCourseDto studentCourseDto) {
+        log.info("StudentCourseController start course with courseId {}, studentId {}",
+                studentCourseDto.getCourse().getCourseId(), studentCourseDto.getStudent().getId());
         return studentCourseService.startCourse(studentCourseDto);
     }
 
     @Override
     public StudentCourseDto finishCourse(StudentCourseDto studentCourseDto, long courseId) {
+        log.info("StudentCourseController finish course with studentCourseId " + courseId);
         return studentCourseService.finishCourse(studentCourseDto, courseId);
     }
 
     @Override
     public Page<StudentCourseDto> findFinishedCourses(Pageable pageable) {
+        log.info("StudentCourseController find finished courses method");
         return rateStudentService.findFinishedCourses(pageable);
     }
 
     @Override
     public JournalDto rateStudent(JournalDto journalDto) {
+        log.info("StudentCourseController rate student course with studentCourseId " +
+                journalDto.getStudentCourse().getStudentCourseId());
         return rateStudentService.rateStudent(journalDto);
     }
 }

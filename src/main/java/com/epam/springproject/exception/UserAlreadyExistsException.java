@@ -2,7 +2,7 @@ package com.epam.springproject.exception;
 
 import com.epam.springproject.model.enums.ErrorType;
 
-public class UserAlreadyExistsException extends ServiceException{
+public class UserAlreadyExistsException extends ServiceException {
 
     private static final String DEFAULT_MESSAGE = "User already exists!";
 

@@ -7,11 +7,10 @@ import com.epam.springproject.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,9 +20,9 @@ public class UserController implements UserApi {
     private final UserService userService;
 
     @Override
-    public Page<UserDto> getAllUsers(Pageable pageable) {
+    public Page<UserDto> getAllUsers(int pageSize, int pageNumber, String sortType) {
         log.info("UserController getAllUsers method");
-        return userService.listUsers(pageable);
+        return userService.listUsers(PageRequest.of(pageNumber, pageSize, Sort.by(Sort.DEFAULT_DIRECTION, sortType)));
     }
 
     @Override

@@ -14,7 +14,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Api(tags = "Course management API")
 @RequestMapping("/api/v1/courses")
@@ -27,8 +26,9 @@ public interface CourseApi {
 
     @ApiOperation("Get all courses")
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "/")
-    Page<CourseDto> listCourses(Pageable pageable);
+    @GetMapping()
+    Page<CourseDto> listCourses(@RequestParam("pageSize") int pageSize, @RequestParam("pageNumber") int pageNumber,
+                                @RequestParam("sortType") String sortType);
 
     @ApiOperation("Create course")
     @ResponseStatus(HttpStatus.CREATED)

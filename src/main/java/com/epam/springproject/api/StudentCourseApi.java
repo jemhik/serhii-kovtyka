@@ -1,6 +1,5 @@
 package com.epam.springproject.api;
 
-import com.epam.springproject.dto.CourseDto;
 import com.epam.springproject.dto.JournalDto;
 import com.epam.springproject.dto.StudentCourseDto;
 import com.epam.springproject.dto.group.OnCreate;
@@ -11,7 +10,6 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 

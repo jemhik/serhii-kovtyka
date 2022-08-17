@@ -4,7 +4,6 @@ import com.epam.springproject.dto.group.OnCreate;
 import com.epam.springproject.dto.group.OnUpdate;
 import com.epam.springproject.model.Course;
 import com.epam.springproject.model.User;
-import com.epam.springproject.validation.TextBoxConstraint;
 import lombok.Builder;
 import lombok.Data;
 
@@ -21,11 +20,8 @@ public class StudentCourseDto {
     private User student;
 
     @NotBlank(message = "'progress' shouldn't be empty", groups = OnCreate.class)
-    @Null(message = "'teacher' should be absent in request", groups = OnUpdate.class)
     private String progress;
 
-//    @NotBlank(message = "'studentSolution' shouldn't be empty", groups = OnCreate.class)
-//    @TextBoxConstraint(message = "You should use only latin letters and numbers", groups = OnCreate.class)
     private String studentSolution;
 
 }

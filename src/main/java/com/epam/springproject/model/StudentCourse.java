@@ -18,13 +18,15 @@ public class StudentCourse {
     private Long studentCourseId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="course_id", referencedColumnName = "courseId")
+    @JoinColumn(name = "course_id", referencedColumnName = "courseId")
     @JsonIgnore
     private Course course;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="student_id", referencedColumnName = "id")
+    @JoinColumn(name = "student_id", referencedColumnName = "id")
     @JsonIgnore
     private User student;
+
     private String progress;
     private String studentSolution;
 

@@ -24,7 +24,7 @@ public class Course {
     private Long courseId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="teacherId", referencedColumnName = "id")
+    @JoinColumn(name = "teacherId", referencedColumnName = "id")
     @JsonIgnore
     private User teacher;
 
