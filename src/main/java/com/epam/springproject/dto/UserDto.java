@@ -18,7 +18,7 @@ import javax.validation.constraints.Pattern;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDto {
 
-    private long id;
+    private Long id;
 
     @NotBlank(message = "'firstName shouldn't be empty", groups = OnCreate.class)
     private String firstName;
