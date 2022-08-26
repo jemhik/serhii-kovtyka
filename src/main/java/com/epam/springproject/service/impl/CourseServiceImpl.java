@@ -53,25 +53,4 @@ public class CourseServiceImpl implements CourseService {
         log.info("CourseService deleteCourse with courseId " + courseId);
         courseRepository.deleteCourse(courseId);
     }
-
-//    private CourseDto mapCourseToCourseDto(Course course) {
-//        return CourseDto.builder()
-//                .name(course.getName())
-//                .description(course.getDescription())
-//                .duration(course.getDuration())
-//                .materials(course.getMaterials())
-//                .task(course.getTask())
-//                .build();
-//    }
-//
-//    private Course mapCourseDtoToCourse(CourseDto courseDto) {
-//        return Course.builder()
-//                .name(courseDto.getName())
-//                .description(courseDto.getDescription())
-//                .duration(courseDto.getDuration())
-//                .materials(courseDto.getMaterials())
-//                .task(courseDto.getTask())
-//                .build();
-//    }
-
 }
