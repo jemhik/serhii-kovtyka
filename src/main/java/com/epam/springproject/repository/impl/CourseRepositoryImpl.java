@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@Component
+@Repository
 public class CourseRepositoryImpl implements CourseRepository {
 
     private final List<Course> list = new ArrayList<>();
