@@ -62,4 +62,16 @@ public class UserTestDataUtil {
                 .build();
     }
 
+    public static User createTeacher() {
+        return User.builder()
+                .id(ID)
+                .firstName(FIRST_NAME)
+                .lastName(LAST_NAME)
+                .email(TEST_EMAIL)
+                .password(TEST_PASSWORD)
+                .status(createDefaultStatus())
+                .role(createTeacherRole())
+                .build();
+    }
+
 }

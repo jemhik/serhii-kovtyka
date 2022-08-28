@@ -34,7 +34,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-@Slf4j
 public class UserServiceImplTest {
 
     @InjectMocks
@@ -109,7 +108,7 @@ public class UserServiceImplTest {
 
         UserDto userDto = userService.updateUser(TEST_EMAIL, userDtoTest);
 
-        assertThat(userDto, is(userDto));
+        assertThat(userDto, is(userDtoTest));
 
         verify(userRepository, times(1)).findByEmail(TEST_EMAIL);
         verify(userRepository, times(1)).save(testUser);

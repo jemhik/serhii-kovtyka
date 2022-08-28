@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface CourseService {
 
-    Page<CourseDto> getTeacherCourses(Pageable pageable, long teacherId);
+    Page<CourseDto> getCoursesByTeacherId(Pageable pageable, long teacherId);
 
     Page<CourseDto> listCourses(Pageable pageable);
 

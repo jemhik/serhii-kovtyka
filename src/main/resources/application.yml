@@ -32,7 +32,7 @@ management:
     health:
       show-details: always
 
-#logging:
-#  level:
-#    org.springframework.orm.jpa: DEBUG
-#    org.springframework.transaction: DEBUG
+logging:
+  level:
+    org.springframework.orm.jpa: DEBUG
+    org.springframework.transaction: DEBUG

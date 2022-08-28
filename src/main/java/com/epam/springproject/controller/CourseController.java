@@ -22,7 +22,7 @@ public class CourseController implements CourseApi {
     @Override
     public Page<CourseDto> getTeacherCourses(Pageable pageable, long teacherId) {
         log.info("CourseController getTeacherCourses with teacherId " + teacherId);
-        return courseService.getTeacherCourses(pageable, teacherId);
+        return courseService.getCoursesByTeacherId(pageable, teacherId);
     }
 
     @Override

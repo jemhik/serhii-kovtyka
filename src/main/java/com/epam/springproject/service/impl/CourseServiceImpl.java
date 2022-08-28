@@ -22,7 +22,7 @@ public class CourseServiceImpl implements CourseService {
     private final UserRepository userRepository;
 
     @Override
-    public Page<CourseDto> getTeacherCourses(Pageable pageable, long teacherId) {
+    public Page<CourseDto> getCoursesByTeacherId(Pageable pageable, long teacherId) {
         log.info("CourseService getTeacherCourses with teacher id " + teacherId);
         return courseRepository.findByTeacherId(teacherId, pageable)
                 .map(CourseMapper.INSTANCE::mapCourseToCourseDto);
