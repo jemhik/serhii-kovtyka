@@ -81,11 +81,11 @@ public class StudentCourseServiceImplTest {
                 testStudentCourseDto.getProgress(), testStudentCourseDto.getStudentCourseId());
 
         assertThat(studentCourseDto, allOf(
-                hasProperty("studentCourseId", equalTo(studentCourseDto.getStudentCourseId())),
-                hasProperty("progress", equalTo(studentCourseDto.getProgress())),
-                hasProperty("studentSolution", equalTo(studentCourseDto.getStudentSolution())),
-                hasProperty("student", equalTo(studentCourseDto.getStudent())),
-                hasProperty("course", equalTo(studentCourseDto.getCourse()))
+                hasProperty("studentCourseId", equalTo(studentCourse.getStudentCourseId())),
+                hasProperty("progress", equalTo(studentCourse.getProgress())),
+                hasProperty("studentSolution", equalTo(studentCourse.getStudentSolution())),
+                hasProperty("student", equalTo(studentCourse.getStudent())),
+                hasProperty("course", equalTo(studentCourse.getCourse()))
         ));
     }
 

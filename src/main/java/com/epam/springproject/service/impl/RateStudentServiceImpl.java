@@ -32,8 +32,7 @@ public class RateStudentServiceImpl implements RateStudentService {
     @Override
     @Transactional
     public JournalDto rateStudent(JournalDto journalDto) {
-        log.info("RateStudentService rate student course with studentCourseId " +
-                journalDto.getStudentCourse().getStudentCourseId());
+        log.info("RateStudentService rate student course with assessmentId " + journalDto.getAssessmentId());
 
         studentCourseRepository.endCourse("ended", journalDto.getStudentCourse().getStudentCourseId());
         journalDto.setStudentCourse(studentCourseRepository.getById(journalDto.getStudentCourse().getStudentCourseId()));
