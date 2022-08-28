@@ -12,7 +12,6 @@ import com.epam.springproject.repository.StatusRepository;
 import com.epam.springproject.repository.UserRepository;
 import com.epam.springproject.service.impl.UserServiceImpl;
 import com.epam.springproject.test.util.UserTestDataUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

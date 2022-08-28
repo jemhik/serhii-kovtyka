@@ -1,10 +1,8 @@
 package com.epam.springproject.service;
 
 import com.epam.springproject.dto.CourseDto;
-import com.epam.springproject.dto.UserDto;
 import com.epam.springproject.exception.EntityNotFoundException;
 import com.epam.springproject.mapper.CourseMapper;
-import com.epam.springproject.mapper.UserMapper;
 import com.epam.springproject.model.Course;
 import com.epam.springproject.model.User;
 import com.epam.springproject.repository.CourseRepository;
@@ -12,7 +10,6 @@ import com.epam.springproject.repository.UserRepository;
 import com.epam.springproject.service.impl.CourseServiceImpl;
 import com.epam.springproject.test.util.CourseTestDataUtil;
 import com.epam.springproject.test.util.UserTestDataUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -27,10 +24,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static com.epam.springproject.test.util.UserTestDataUtil.TEST_EMAIL;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.hamcrest.Matchers.hasProperty;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
@@ -48,12 +43,12 @@ public class CourseServiceImplTest {
     void getTeacherCoursesTest() {
         User teacher = UserTestDataUtil.createTeacher();
 
-        CourseDto courseDto1  = CourseTestDataUtil.createCourseDto();
+        CourseDto courseDto1 = CourseTestDataUtil.createCourseDto();
 
-        CourseDto courseDto2  = CourseTestDataUtil.createCourseDto();
+        CourseDto courseDto2 = CourseTestDataUtil.createCourseDto();
         courseDto2.setCourseId(2L);
 
-        CourseDto courseDto3  = CourseTestDataUtil.createCourseDto();
+        CourseDto courseDto3 = CourseTestDataUtil.createCourseDto();
         courseDto3.setCourseId(3L);
 
         List<Course> courses =
@@ -78,12 +73,12 @@ public class CourseServiceImplTest {
 
     @Test
     void listCoursesTest() {
-        CourseDto courseDto1  = CourseTestDataUtil.createCourseDto();
+        CourseDto courseDto1 = CourseTestDataUtil.createCourseDto();
 
-        CourseDto courseDto2  = CourseTestDataUtil.createCourseDto();
+        CourseDto courseDto2 = CourseTestDataUtil.createCourseDto();
         courseDto2.setCourseId(2L);
 
-        CourseDto courseDto3  = CourseTestDataUtil.createCourseDto();
+        CourseDto courseDto3 = CourseTestDataUtil.createCourseDto();
         courseDto3.setCourseId(3L);
 
         List<Course> courses =

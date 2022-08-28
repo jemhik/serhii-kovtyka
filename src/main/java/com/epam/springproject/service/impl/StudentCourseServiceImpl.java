@@ -40,11 +40,10 @@ public class StudentCourseServiceImpl implements StudentCourseService {
     @Override
     @Transactional
     public StudentCourseDto finishCourse(StudentCourseDto studentCourseDto, long courseId) {
-        log.info("StudentCourseService finishCourse with courseId {}, studentId {}",
-                studentCourseDto.getCourse().getCourseId(), studentCourseDto.getStudent().getId());
+        log.info("StudentCourseService finishCourse studentCourse with id " + courseId);
 
         studentCourseRepository.
-                finishCourse(studentCourseDto.getStudentSolution(), "submitted", courseId);
+                finishCourse(studentCourseDto.getStudentSolution(), studentCourseDto.getProgress(), courseId);
 
         return StudentCourseMapper.INSTANCE.mapStudentCourseToStudentCourseDto(
                 studentCourseRepository
