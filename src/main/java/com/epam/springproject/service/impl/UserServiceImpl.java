@@ -61,21 +61,4 @@ public class UserServiceImpl implements UserService {
                 .map(UserMapper.INSTANCE::mapUserToUserDto)
                 .collect(Collectors.toList());
     }
-
-//    private UserDto mapUserToUserDto(User user){
-//        return UserDto.builder()
-//                .firstName(user.getFirstName())
-//                .lastName(user.getLastName())
-//                .email(user.getEmail())
-//                .build();
-//    }
-//
-//    private User mapUserDtoToUser(UserDto userDto){
-//        return User.builder()
-//                .firstName(userDto.getFirstName())
-//                .lastName(userDto.getLastName())
-//                .email(userDto.getEmail())
-//                .password(userDto.getPassword())
-//                .build();
-//    }
 }
